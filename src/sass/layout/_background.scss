@@ -2,6 +2,19 @@
 	height: 100vh;
 	max-width: $desktop;
 	margin: 0 auto;
+	position: relative;
+
+	&--dark {
+		&__true {
+			background-color: $veryDarkBlue;
+			color: $lightGrayishBlue;
+		}
+
+		&__false {
+			background-color: $veryLightGray;
+			color: $veryDarkGrayishBlue;
+		}
+	}
 
 	&--head {
 		height: 37vh;
@@ -19,13 +32,11 @@
 		}
 	}
 
-	&--dark {
-		&__true {
-			background-color: $veryDarkBlue;
-		}
-
-		&__false {
-			background-color: $veryLightGray;
-		}
+	&--app-holder {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
 	}
 }
