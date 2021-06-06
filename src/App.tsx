@@ -1,10 +1,9 @@
 import React from "react";
-import "./App.scss";
 
 function App() {
 	return (
 		<div className="app">
-			<h1>Todo App</h1>
+			<h1>TODO</h1>
 		</div>
 	);
 }
