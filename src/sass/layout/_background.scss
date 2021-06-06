@@ -1,0 +1,31 @@
+.background {
+	height: 100vh;
+	max-width: $desktop;
+	margin: 0 auto;
+
+	&--head {
+		height: 37vh;
+		background-size: cover;
+		background-position: center;
+
+		&--dark {
+			&__true {
+				background-image: url("../images/bg-desktop-dark.jpg");
+			}
+
+			&__false {
+				background-image: url("../images/bg-desktop-light.jpg");
+			}
+		}
+	}
+
+	&--dark {
+		&__true {
+			background-color: $veryDarkBlue;
+		}
+
+		&__false {
+			background-color: $veryLightGray;
+		}
+	}
+}
