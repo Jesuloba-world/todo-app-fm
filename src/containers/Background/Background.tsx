@@ -9,7 +9,11 @@ const Background: React.FC<backgroundProps> = (props) => (
 		<div
 			className={`background--head background--head--dark__${props.isDark}`}
 		></div>
-		<div className={`background--app-holder`}>{props.children}</div>
+		<div className={`background--app-holder`}>
+			<div className={`background--app-holder__main`}>
+				{props.children}
+			</div>
+		</div>
 	</div>
 );
 
