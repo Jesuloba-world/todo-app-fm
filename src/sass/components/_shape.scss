@@ -1,0 +1,22 @@
+.Oval {
+	background: transparent;
+	width: 2.4rem;
+	height: 2.4rem;
+	border-radius: 50%;
+
+	&--into {
+		position: absolute;
+		top: 20px;
+		left: 24px;
+	}
+
+	&--dark {
+		&__true {
+			border: 1px solid $veryDarkerGrayishBlue;
+		}
+
+		&__false {
+			border: 1px solid $veryLightGrayishBlue;
+		}
+	}
+}

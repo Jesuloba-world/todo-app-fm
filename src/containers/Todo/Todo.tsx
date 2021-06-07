@@ -2,6 +2,7 @@ import React from "react";
 
 import AppName from "../../components/AppName/AppName";
 import ToggleDark from "../../components/ToggleDark/ToggleDark";
+import TodoInput from "../../components/TodoInput/TodoInput";
 
 interface todoProps {
 	toggleDark: () => void;
@@ -18,6 +19,7 @@ const Todo: React.FC<todoProps> = (props) => {
 					isDark={props.isDark}
 				/>
 			</div>
+			<TodoInput isDark={props.isDark} />
 		</div>
 	);
 };
