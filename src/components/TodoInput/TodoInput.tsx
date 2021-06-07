@@ -4,6 +4,7 @@ import Oval from "../UI/shape/oval";
 
 interface props {
 	isDark: Boolean;
+	addTodo: (text: string) => void;
 }
 
 const TodoInput: React.FC<props> = (props) => {
@@ -13,7 +14,7 @@ const TodoInput: React.FC<props> = (props) => {
 		event.preventDefault();
 		const enteredTodo = todoInputRef.current!.value;
 		todoInputRef.current!.value = "";
-		console.log(enteredTodo);
+		props.addTodo(enteredTodo);
 	};
 
 	return (
