@@ -17,7 +17,7 @@ const Todo: React.FC<todoProps> = (props) => {
 	const todoInputHandler = (text: string) => {
 		setTodoItems((prev) => [
 			...prev,
-			{ id: Math.random.toString(), todo: text },
+			{ id: Math.random().toString(), todo: text },
 		]);
 	};
 
@@ -31,7 +31,7 @@ const Todo: React.FC<todoProps> = (props) => {
 				/>
 			</div>
 			<TodoInput isDark={props.isDark} addTodo={todoInputHandler} />
-			<TodoList items={todoItems} />
+			<TodoList items={todoItems} isDark={props.isDark} />
 		</div>
 	);
 };

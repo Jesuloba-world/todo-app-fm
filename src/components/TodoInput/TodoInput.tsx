@@ -14,7 +14,9 @@ const TodoInput: React.FC<props> = (props) => {
 		event.preventDefault();
 		const enteredTodo = todoInputRef.current!.value;
 		todoInputRef.current!.value = "";
-		props.addTodo(enteredTodo);
+		if (!!enteredTodo.trim()) {
+			props.addTodo(enteredTodo);
+		}
 	};
 
 	return (

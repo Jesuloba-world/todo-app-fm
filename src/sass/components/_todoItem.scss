@@ -1,0 +1,27 @@
+.todoItem {
+	height: 6.4rem;
+	padding: 2rem 2.4rem;
+	padding-left: 7.2rem;
+	position: relative;
+	display: flex;
+	align-items: center;
+
+	&--text {
+		font-family: $family;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 1.8rem;
+		line-height: 1.8rem;
+		letter-spacing: -0.25px;
+
+		&--dark {
+			&__true {
+				color: $lightGrayishBlue;
+			}
+
+			&__false {
+				color: $veryDarkGrayishBlue;
+			}
+		}
+	}
+}

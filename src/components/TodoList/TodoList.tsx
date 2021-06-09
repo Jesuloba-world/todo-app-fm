@@ -5,14 +5,19 @@ import todoItem from "../../models/todoItem.model";
 
 interface props {
 	items: todoItem[];
+	isDark: Boolean;
 }
 
 const TodoList: React.FC<props> = (props) => {
 	return (
-		<div>
+		<div className={`todoList todoList--dark__${props.isDark}`}>
 			<ul>
 				{props.items.map((item) => (
-					<TodoItem text={item.todo} />
+					<TodoItem
+						key={item.id}
+						text={item.todo}
+						isDark={props.isDark}
+					/>
 				))}
 			</ul>
 		</div>
