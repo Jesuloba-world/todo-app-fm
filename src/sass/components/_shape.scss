@@ -1,22 +1,47 @@
 .Oval {
-	background: transparent;
 	width: 2.4rem;
 	height: 2.4rem;
-	border-radius: 50%;
+	margin: auto;
 
-	// &--into {
-	// 	position: absolute;
-	// 	top: 20px;
-	// 	left: 24px;
-	// }
+	position: relative;
+	box-sizing: border-box;
+
+	$border: 1px;
+	color: #fff;
+	// background: $veryDarkDesaturatedBlue;
+	background-clip: padding-box; /* !importanté */
+	border: solid $border transparent; /* !importanté */
+	border-radius: 50%;
 
 	&--dark {
 		&__true {
 			border: 1px solid $veryDarkerGrayishBlue;
+			background: $veryDarkDesaturatedBlue;
 		}
 
 		&__false {
 			border: 1px solid $veryLightGrayishBlue;
+			background: #fff;
+		}
+	}
+
+	&:hover {
+		border: none;
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: -1;
+			margin: -$border; /* !importanté */
+			border-radius: inherit; /* !importanté */
+			background: linear-gradient(
+				hsl(192, 100%, 67%),
+				hsl(280, 87%, 65%)
+			);
 		}
 	}
 }
