@@ -1,7 +1,6 @@
 .todoItem {
 	height: 6.4rem;
 	padding: 2rem 2.4rem;
-	padding-left: 7.2rem;
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -24,4 +23,8 @@
 			}
 		}
 	}
+}
+
+.Item--Oval--wrapper {
+	margin-right: 2.4rem;
 }

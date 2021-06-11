@@ -10,7 +10,9 @@ const TodoItem: React.FC<props> = (props) => {
 	return (
 		<li>
 			<div className="todoItem">
-				<Oval isDark={props.isDark} />
+				<div className="Item--Oval--wrapper">
+					<Oval isDark={props.isDark} />
+				</div>
 				<p
 					className={`todoItem--text todoItem--text--dark__${props.isDark}`}
 				>
