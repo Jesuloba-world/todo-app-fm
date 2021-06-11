@@ -8,8 +8,8 @@ interface props {
 
 const TodoItem: React.FC<props> = (props) => {
 	return (
-		<li>
-			<div className="todoItem">
+		<li className={`todoItem todoItem--dark__${props.isDark}`}>
+			<div className="todoItem--div">
 				<div className="Item--Oval--wrapper">
 					<Oval isDark={props.isDark} />
 				</div>

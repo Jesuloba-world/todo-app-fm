@@ -18,10 +18,16 @@
 	&--dark {
 		&__true {
 			background: $veryDarkDesaturatedBlue;
+			&:focus-within {
+				color: $lightGrayishBlue;
+			}
 		}
 
 		&__false {
 			background: #fff;
+			&:focus-within {
+				color: $fontDarkForWhite;
+			}
 		}
 	}
 

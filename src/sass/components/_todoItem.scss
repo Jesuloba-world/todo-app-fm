@@ -1,9 +1,29 @@
 .todoItem {
-	height: 6.4rem;
-	padding: 2rem 2.4rem;
-	position: relative;
-	display: flex;
-	align-items: center;
+	&--div {
+		height: 6.4rem;
+		padding: 2rem 2.4rem;
+		position: relative;
+		display: flex;
+		align-items: center;
+	}
+
+	// &:not(:last-child) {
+	// 	border-bottom: 1px solid $veryDarkerGrayishBlue;
+	// }
+
+	&--dark {
+		&__true {
+			&:not(:last-child) {
+				border-bottom: 1px solid $veryDarkerGrayishBlue;
+			}
+		}
+
+		&__false {
+			&:not(:last-child) {
+				border-bottom: 1px solid $veryLightGrayishBlue;
+			}
+		}
+	}
 
 	&--text {
 		font-family: $family;
