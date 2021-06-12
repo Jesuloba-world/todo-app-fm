@@ -22,7 +22,11 @@ const TodoItem: React.FC<props> = (props) => {
 					{props.text}
 				</p>
 				<div className="todoItem--XShape">
-					<XShape deleteTodo={props.deleteTodo} itemId={props.id} />
+					<XShape
+						deleteTodo={props.deleteTodo}
+						itemId={props.id}
+						isDark={props.isDark}
+					/>
 				</div>
 			</div>
 		</li>

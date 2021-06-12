@@ -45,8 +45,24 @@
 	}
 }
 
-.XShape:hover {
-	& path {
-		fill: red;
+.XShape {
+	&--dark {
+		&__true {
+			& path {
+				fill: hsla(235, 16%, 43%, 1);
+			}
+		}
+
+		&__false {
+			& path {
+				fill: hsla(235, 19%, 35%, 1);
+			}
+		}
+	}
+
+	&:hover {
+		& path {
+			fill: red;
+		}
 	}
 }

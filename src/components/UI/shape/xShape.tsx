@@ -4,6 +4,7 @@ import { ReactComponent as Xshape } from "../../../images/icon-cross.svg";
 interface props {
 	deleteTodo: (id: string) => void;
 	itemId: string;
+	isDark: Boolean;
 }
 
 const XShape: React.FC<props> = (props) => {
@@ -11,7 +12,12 @@ const XShape: React.FC<props> = (props) => {
 		props.deleteTodo(props.itemId);
 	};
 
-	return <Xshape className="XShape" onClick={onClickHandler} />;
+	return (
+		<Xshape
+			className={`XShape XShape--dark__${props.isDark}`}
+			onClick={onClickHandler}
+		/>
+	);
 };
 
 export default XShape;
