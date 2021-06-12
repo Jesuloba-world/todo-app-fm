@@ -2,8 +2,8 @@ import React from "react";
 import { ReactComponent as Xshape } from "../../../images/icon-cross.svg";
 
 interface props {
-	deleteTodo: (id: string) => void;
-	itemId: string;
+	deleteTodo: (id: String) => void;
+	itemId: String;
 	isDark: Boolean;
 }
 

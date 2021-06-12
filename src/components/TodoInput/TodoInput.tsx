@@ -23,7 +23,7 @@ const TodoInput: React.FC<props> = (props) => {
 		<form onSubmit={submitHandler} className="TodoInput--container">
 			<label htmlFor="todoInput">
 				<div className="Oval--wrapper">
-					<Oval isDark={props.isDark} />
+					<Oval isDark={props.isDark} todoIsCompleted={false} />
 				</div>
 			</label>
 			<input

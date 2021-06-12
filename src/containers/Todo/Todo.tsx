@@ -17,11 +17,11 @@ const Todo: React.FC<todoProps> = (props) => {
 	const todoInputHandler = (text: string) => {
 		setTodoItems((prev) => [
 			...prev,
-			{ id: Math.random().toString(), todo: text },
+			{ id: Math.random().toString(), completed: false, todo: text },
 		]);
 	};
 
-	const todoDeleteHandler = (id: string) => {
+	const todoDeleteHandler = (id: String) => {
 		setTodoItems((prev) => prev.filter((todo) => todo.id !== id));
 	};
 

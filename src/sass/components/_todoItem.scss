@@ -43,6 +43,20 @@
 				color: $veryDarkGrayishBlue;
 			}
 		}
+
+		&__completed {
+			text-decoration: line-through;
+
+			&--dark {
+				&__true {
+					color: $veryDarkGrayishBlue;
+				}
+
+				&__false {
+					color: $lightGrayishBlue;
+				}
+			}
+		}
 	}
 
 	&--Oval {

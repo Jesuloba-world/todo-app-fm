@@ -12,6 +12,10 @@
 	border: solid $border transparent;
 	border-radius: 50%;
 
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
 	&--dark {
 		&__true {
 			border: 1px solid $veryDarkerGrayishBlue;
@@ -22,6 +26,10 @@
 			border: 1px solid $veryLightGrayishBlue;
 			background: #fff;
 		}
+	}
+
+	&--check {
+		background: $checkBackground;
 	}
 
 	&:hover {
@@ -37,10 +45,7 @@
 			z-index: -1;
 			margin: -$border;
 			border-radius: inherit;
-			background: linear-gradient(
-				hsl(192, 100%, 67%),
-				hsl(280, 87%, 65%)
-			);
+			background: $checkBackground;
 		}
 	}
 }
