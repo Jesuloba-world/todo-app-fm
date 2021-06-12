@@ -7,6 +7,7 @@ interface props {
 	items: todoItem[];
 	isDark: Boolean;
 	deleteTodo: (id: String) => void;
+	toggleComplete: (id: String) => void;
 }
 
 const TodoList: React.FC<props> = (props) => {
@@ -21,6 +22,7 @@ const TodoList: React.FC<props> = (props) => {
 						text={item.todo}
 						isDark={props.isDark}
 						deleteTodo={props.deleteTodo}
+						toggleComplete={props.toggleComplete}
 					/>
 				))}
 			</ul>

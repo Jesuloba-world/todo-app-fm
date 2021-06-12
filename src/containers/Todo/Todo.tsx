@@ -25,6 +25,14 @@ const Todo: React.FC<todoProps> = (props) => {
 		setTodoItems((prev) => prev.filter((todo) => todo.id !== id));
 	};
 
+	const todoToggleCompleteHandler = (id: String) => {
+		const updatedTodo = [...todoItems];
+		const toChangeIndex = updatedTodo.findIndex((todo) => todo.id === id);
+		updatedTodo[toChangeIndex].completed =
+			!updatedTodo[toChangeIndex].completed;
+		setTodoItems(updatedTodo);
+	};
+
 	return (
 		<div className="Todo">
 			<div className="Todo--top">
@@ -39,6 +47,7 @@ const Todo: React.FC<todoProps> = (props) => {
 				items={todoItems}
 				isDark={props.isDark}
 				deleteTodo={todoDeleteHandler}
+				toggleComplete={todoToggleCompleteHandler}
 			/>
 		</div>
 	);

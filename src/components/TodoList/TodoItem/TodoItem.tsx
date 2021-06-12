@@ -7,13 +7,18 @@ interface props {
 	isCompleted: Boolean;
 	isDark: Boolean;
 	deleteTodo: (id: String) => void;
+	toggleComplete: (id: String) => void;
 }
 
 const TodoItem: React.FC<props> = (props) => {
+	const onOvalClickHandler = () => {
+		props.toggleComplete(props.id);
+	};
+
 	return (
 		<li className={`todoItem todoItem--dark__${props.isDark}`}>
 			<div className="todoItem--div">
-				<div className="todoItem--Oval">
+				<div className="todoItem--Oval" onClick={onOvalClickHandler}>
 					<Oval
 						isDark={props.isDark}
 						todoIsCompleted={props.isCompleted}
