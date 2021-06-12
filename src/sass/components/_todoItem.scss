@@ -7,9 +7,10 @@
 		align-items: center;
 	}
 
-	// &:not(:last-child) {
-	// 	border-bottom: 1px solid $veryDarkerGrayishBlue;
-	// }
+	&:hover &--XShape {
+		transform: translateX(0);
+		opacity: 1;
+	}
 
 	&--dark {
 		&__true {
@@ -43,9 +44,16 @@
 			}
 		}
 	}
-}
 
-.Item--Oval--wrapper {
-	margin-right: 2.4rem;
-	z-index: 0;
+	&--Oval {
+		margin-right: 2.4rem;
+		z-index: 0;
+	}
+
+	&--XShape {
+		margin-left: auto;
+		transform: translateX(4rem);
+		opacity: 0;
+		transition: all 0.3s;
+	}
 }

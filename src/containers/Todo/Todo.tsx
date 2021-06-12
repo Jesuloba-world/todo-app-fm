@@ -21,6 +21,10 @@ const Todo: React.FC<todoProps> = (props) => {
 		]);
 	};
 
+	const todoDeleteHandler = (id: string) => {
+		setTodoItems((prev) => prev.filter((todo) => todo.id !== id));
+	};
+
 	return (
 		<div className="Todo">
 			<div className="Todo--top">
@@ -31,7 +35,11 @@ const Todo: React.FC<todoProps> = (props) => {
 				/>
 			</div>
 			<TodoInput isDark={props.isDark} addTodo={todoInputHandler} />
-			<TodoList items={todoItems} isDark={props.isDark} />
+			<TodoList
+				items={todoItems}
+				isDark={props.isDark}
+				deleteTodo={todoDeleteHandler}
+			/>
 		</div>
 	);
 };

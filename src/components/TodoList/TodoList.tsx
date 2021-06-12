@@ -6,6 +6,7 @@ import todoItem from "../../models/todoItem.model";
 interface props {
 	items: todoItem[];
 	isDark: Boolean;
+	deleteTodo: (id: string) => void;
 }
 
 const TodoList: React.FC<props> = (props) => {
@@ -14,9 +15,11 @@ const TodoList: React.FC<props> = (props) => {
 			<ul>
 				{props.items.map((item) => (
 					<TodoItem
+						id={item.id}
 						key={item.id}
 						text={item.todo}
 						isDark={props.isDark}
+						deleteTodo={props.deleteTodo}
 					/>
 				))}
 			</ul>

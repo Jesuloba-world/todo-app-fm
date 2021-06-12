@@ -44,3 +44,9 @@
 		}
 	}
 }
+
+.XShape:hover {
+	& path {
+		fill: red;
+	}
+}
