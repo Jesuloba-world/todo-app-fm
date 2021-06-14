@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { v4 as uniqueId } from "uuid";
 
 import AppName from "../../components/AppName/AppName";
 import ToggleDark from "../../components/ToggleDark/ToggleDark";
@@ -17,7 +18,7 @@ const Todo: React.FC<todoProps> = (props) => {
 	const todoInputHandler = (text: string) => {
 		setTodoItems((prev) => [
 			...prev,
-			{ id: Math.random().toString(), completed: false, todo: text },
+			{ id: uniqueId(), completed: false, todo: text },
 		]);
 	};
 

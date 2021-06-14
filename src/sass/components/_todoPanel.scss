@@ -1,0 +1,61 @@
+.TodoPanel {
+	padding: 2rem 2.4rem;
+	border-top: 1px solid $veryDarkerGrayishBlue;
+	font-size: 1.4rem;
+
+	display: flex;
+	justify-content: space-between;
+
+	& p {
+		color: hsl(235, 16%, 42%);
+	}
+
+	&--displayControls {
+		display: flex;
+
+		& p {
+			font-weight: bold;
+			cursor: pointer;
+
+			&:not(:last-child) {
+				margin-right: 1.8rem;
+			}
+		}
+
+		&__blue {
+			color: $brightBlue !important;
+		}
+
+		&__normal {
+			&:hover {
+				color: $lighterGrayishBlue;
+			}
+		}
+	}
+
+	&--clearCompleted {
+		cursor: pointer;
+
+		&:hover {
+			color: $lighterGrayishBlue;
+		}
+	}
+
+	&--light {
+		& p {
+			color: $darkGrayishBlue;
+		}
+
+		& .TodoPanel--displayControls__normal {
+			&:hover {
+				color: $veryDarkGrayishBlue;
+			}
+		}
+
+		& .TodoPanel--clearCompleted {
+			&:hover {
+				color: $veryDarkGrayishBlue;
+			}
+		}
+	}
+}
