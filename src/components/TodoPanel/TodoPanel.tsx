@@ -1,7 +1,9 @@
+import { modifier } from "../../models/todoItem.model";
+
 interface props {
 	isDark: Boolean;
 	numberOfItemsLeft: number;
-	numberOfCompleted: number;
+	toDisplay: (modifier: modifier) => void;
 }
 
 const TodoPanel: React.FC<props> = (props) => {
@@ -16,9 +18,22 @@ const TodoPanel: React.FC<props> = (props) => {
 				left
 			</p>
 			<div className={`TodoPanel--displayControls`}>
-				<p className={`TodoPanel--displayControls__blue`}>All</p>
-				<p className={`TodoPanel--displayControls__normal`}>Active</p>
-				<p className={`TodoPanel--displayControls__normal`}>
+				<p
+					className={`TodoPanel--displayControls__blue`}
+					onClick={() => props.toDisplay("All")}
+				>
+					All
+				</p>
+				<p
+					className={`TodoPanel--displayControls__normal`}
+					onClick={() => props.toDisplay("Active")}
+				>
+					Active
+				</p>
+				<p
+					className={`TodoPanel--displayControls__normal`}
+					onClick={() => props.toDisplay("Completed")}
+				>
 					Completed
 				</p>
 			</div>

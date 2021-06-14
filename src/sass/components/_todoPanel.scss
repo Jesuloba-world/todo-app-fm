@@ -24,6 +24,10 @@
 
 		&__blue {
 			color: $brightBlue !important;
+
+			&:hover {
+				color: lighten($color: $brightBlue, $amount: 30%) !important;
+			}
 		}
 
 		&__normal {

@@ -4,3 +4,5 @@ export default interface todoItem {
 	completed: Boolean;
 	todo: string;
 }
+
+export type modifier = "All" | "Active" | "Completed";
