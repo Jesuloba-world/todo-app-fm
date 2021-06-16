@@ -1,5 +1,4 @@
 import React from "react";
-// import { Scrollbars } from "react-custom-scrollbars";
 
 import TodoItem from "./TodoItem/TodoItem";
 import todoItem, { modifier } from "../../models/todoItem.model";
@@ -22,7 +21,7 @@ const TodoList: React.FC<props> = (props) => {
 
 	return (
 		<div className={`todoList todoList--dark__${props.isDark}`}>
-			<ul>
+			<ul className="todoList--list">
 				{props.items.map((item) => (
 					<TodoItem
 						id={item.id}

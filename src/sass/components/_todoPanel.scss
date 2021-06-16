@@ -26,7 +26,7 @@
 			color: $brightBlue !important;
 
 			&:hover {
-				color: lighten($color: $brightBlue, $amount: 30%) !important;
+				color: lighten($color: $brightBlue, $amount: 20%) !important;
 			}
 		}
 
@@ -54,7 +54,7 @@
 
 		& .TodoPanel--displayControls__blue {
 			&:hover {
-				color: darken($color: $brightBlue, $amount: 30%) !important;
+				color: darken($color: $brightBlue, $amount: 20%) !important;
 			}
 		}
 
