@@ -56,6 +56,13 @@ const Todo: React.FC<todoProps> = (props) => {
 		}
 	};
 
+	const toClearCompletedHandler = () => {
+		if (todoItems.filter((item) => item.completed === true).length <= 0) {
+			return;
+		}
+		setTodoItems((prev) => prev.filter((item) => item.completed !== true));
+	};
+
 	return (
 		<div className="Todo">
 			<div className="Todo--top">
@@ -73,6 +80,7 @@ const Todo: React.FC<todoProps> = (props) => {
 				deleteTodo={todoDeleteHandler}
 				toggleComplete={todoToggleCompleteHandler}
 				toDisplayModifier={toDisplayModifier}
+				toClearCompleted={toClearCompletedHandler}
 			/>
 		</div>
 	);

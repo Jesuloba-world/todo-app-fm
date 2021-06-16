@@ -12,40 +12,13 @@ interface props {
 	deleteTodo: (id: String) => void;
 	toggleComplete: (id: String) => void;
 	toDisplayModifier: (modifier: modifier) => void;
+	toClearCompleted: () => void;
 }
 
 const TodoList: React.FC<props> = (props) => {
 	const numberOfItemsLeft: number = props.realItems.filter(
 		(item) => item.completed !== true
 	).length;
-
-	// const numberOfCompleted: number = props.realItems.filter(
-	// 	(item) => item.completed === true
-	// ).length;
-
-	// forcing rerender won't work
-
-	// const forceUpdate = React.useReducer(() => ({}), {})[1] as () => void;
-
-	// let toDisplay: todoItem[] = props.items;
-
-	// const toDisplayModifier = (modifier: modifier) => {
-	// 	switch (modifier) {
-	// 		case "All":
-	// 			toDisplay = props.items;
-	// 			break;
-	// 		case "Active":
-	// 			toDisplay = props.items.filter(
-	// 				(item) => item.completed !== true
-	// 			);
-	// 			break;
-	// 		case "Completed":
-	// 			toDisplay = props.items.filter(
-	// 				(item) => item.completed === true
-	// 			);
-	// 			break;
-	// 	}
-	// };
 
 	return (
 		<div className={`todoList todoList--dark__${props.isDark}`}>
@@ -66,6 +39,7 @@ const TodoList: React.FC<props> = (props) => {
 				isDark={props.isDark}
 				numberOfItemsLeft={numberOfItemsLeft}
 				toDisplay={props.toDisplayModifier}
+				toClearCompleted={props.toClearCompleted}
 			/>
 		</div>
 	);

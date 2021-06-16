@@ -46,8 +46,16 @@
 	}
 
 	&--light {
+		border-top: 1px solid $veryLightGrayishBlue;
+
 		& p {
 			color: $darkGrayishBlue;
+		}
+
+		& .TodoPanel--displayControls__blue {
+			&:hover {
+				color: darken($color: $brightBlue, $amount: 30%) !important;
+			}
 		}
 
 		& .TodoPanel--displayControls__normal {

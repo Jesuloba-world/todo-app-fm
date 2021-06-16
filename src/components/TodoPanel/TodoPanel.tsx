@@ -4,6 +4,7 @@ interface props {
 	isDark: Boolean;
 	numberOfItemsLeft: number;
 	toDisplay: (modifier: modifier) => void;
+	toClearCompleted: () => void;
 }
 
 const TodoPanel: React.FC<props> = (props) => {
@@ -37,7 +38,12 @@ const TodoPanel: React.FC<props> = (props) => {
 					Completed
 				</p>
 			</div>
-			<p className={`TodoPanel--clearCompleted`}>Clear completed</p>
+			<p
+				className={`TodoPanel--clearCompleted`}
+				onClick={() => props.toClearCompleted()}
+			>
+				Clear completed
+			</p>
 		</div>
 	);
 };
