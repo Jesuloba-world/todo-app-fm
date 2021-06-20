@@ -15,6 +15,7 @@ interface todoProps {
 const Todo: React.FC<todoProps> = (props) => {
 	const [todoItems, setTodoItems] = useState<todoItem[]>([]);
 	const [itemsToDisplay, setItemsToDisplay] = useState<todoItem[]>([]);
+	const [howToDislay, setHowToDislay] = useState<modifier>("All");
 
 	useEffect(() => {
 		setItemsToDisplay(todoItems);
@@ -41,14 +42,17 @@ const Todo: React.FC<todoProps> = (props) => {
 	const toDisplayModifier = (modifier: modifier) => {
 		switch (modifier) {
 			case "All":
+				setHowToDislay("All");
 				setItemsToDisplay(todoItems);
 				break;
 			case "Active":
+				setHowToDislay("Active");
 				setItemsToDisplay(
 					todoItems.filter((item) => item.completed !== true)
 				);
 				break;
 			case "Completed":
+				setHowToDislay("Completed");
 				setItemsToDisplay(
 					todoItems.filter((item) => item.completed === true)
 				);
@@ -81,6 +85,7 @@ const Todo: React.FC<todoProps> = (props) => {
 				toggleComplete={todoToggleCompleteHandler}
 				toDisplayModifier={toDisplayModifier}
 				toClearCompleted={toClearCompletedHandler}
+				howToDislay={howToDislay}
 			/>
 		</div>
 	);

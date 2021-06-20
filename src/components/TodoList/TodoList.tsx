@@ -13,6 +13,7 @@ interface props {
 	toggleComplete: (id: String) => void;
 	toDisplayModifier: (modifier: modifier) => void;
 	toClearCompleted: () => void;
+	howToDislay: modifier;
 }
 
 const TodoList: React.FC<props> = (props) => {
@@ -55,6 +56,7 @@ const TodoList: React.FC<props> = (props) => {
 				numberOfItemsLeft={numberOfItemsLeft}
 				toDisplay={props.toDisplayModifier}
 				toClearCompleted={props.toClearCompleted}
+				howToDisplay={props.howToDislay}
 			/>
 		</div>
 	);

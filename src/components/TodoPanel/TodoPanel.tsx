@@ -5,6 +5,7 @@ interface props {
 	numberOfItemsLeft: number;
 	toDisplay: (modifier: modifier) => void;
 	toClearCompleted: () => void;
+	howToDisplay: modifier;
 }
 
 const TodoPanel: React.FC<props> = (props) => {
@@ -20,19 +21,31 @@ const TodoPanel: React.FC<props> = (props) => {
 			</p>
 			<div className={`TodoPanel--displayControls`}>
 				<p
-					className={`TodoPanel--displayControls__blue`}
+					className={`${
+						props.howToDisplay === "All"
+							? "TodoPanel--displayControls__blue"
+							: "TodoPanel--displayControls__normal"
+					}`}
 					onClick={() => props.toDisplay("All")}
 				>
 					All
 				</p>
 				<p
-					className={`TodoPanel--displayControls__normal`}
+					className={`${
+						props.howToDisplay === "Active"
+							? "TodoPanel--displayControls__blue"
+							: "TodoPanel--displayControls__normal"
+					}`}
 					onClick={() => props.toDisplay("Active")}
 				>
 					Active
 				</p>
 				<p
-					className={`TodoPanel--displayControls__normal`}
+					className={`${
+						props.howToDisplay === "Completed"
+							? "TodoPanel--displayControls__blue"
+							: "TodoPanel--displayControls__normal"
+					}`}
 					onClick={() => props.toDisplay("Completed")}
 				>
 					Completed
