@@ -1,4 +1,5 @@
 import React from "react";
+import { useDrag, useDrop } from "react-dnd";
 
 import TodoItem from "./TodoItem/TodoItem";
 import todoItem, { modifier } from "../../models/todoItem.model";
@@ -19,6 +20,20 @@ const TodoList: React.FC<props> = (props) => {
 		(item) => item.completed !== true
 	).length;
 
+	const [{ isOver }, dropTodoItemRef] = useDrop({
+		accept: "TODOITEM",
+		collect: (monitor) => ({
+			isOver: monitor.isOver(),
+		}),
+	});
+
+	const [{ isDragging }, dragTodoItemRef] = useDrag(() => ({
+		type: "TODOITEM",
+		collect: (monitor) => ({
+			isDragging: monitor.isDragging,
+		}),
+	}));
+
 	return (
 		<div className={`todoList todoList--dark__${props.isDark}`}>
 			<ul className="todoList--list">
@@ -31,6 +46,7 @@ const TodoList: React.FC<props> = (props) => {
 						isDark={props.isDark}
 						deleteTodo={props.deleteTodo}
 						toggleComplete={props.toggleComplete}
+						dragItem={dragTodoItemRef}
 					/>
 				))}
 			</ul>

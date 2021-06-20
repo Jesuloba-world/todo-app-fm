@@ -1,3 +1,5 @@
+import { ConnectDragSource, useDrag } from "react-dnd";
+
 import Oval from "../../UI/shape/oval";
 import XShape from "../../UI/shape/xShape";
 
@@ -8,6 +10,7 @@ interface props {
 	isDark: Boolean;
 	deleteTodo: (id: String) => void;
 	toggleComplete: (id: String) => void;
+	dragItem: ConnectDragSource;
 }
 
 const TodoItem: React.FC<props> = (props) => {
