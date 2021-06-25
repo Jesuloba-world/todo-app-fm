@@ -23,8 +23,10 @@ const TodoList: React.FC<props> = (props) => {
 
 	const onDragEndHandler = (param: DropResult) => {
 		const srcIndex = param.source.index;
-		const destIndex = param.destination!.index;
-		props.completeDrag(srcIndex, destIndex);
+		if (param.destination) {
+			const destIndex = param.destination.index;
+			props.completeDrag(srcIndex, destIndex);
+		}
 	};
 
 	return (

@@ -68,7 +68,9 @@ const Todo: React.FC<todoProps> = (props) => {
 	};
 
 	const toCompleteDragHandler = (srcIndex: number, destIndex: number) => {
-		todoItems.splice(srcIndex, 0, todoItems.splice(destIndex, 1)[0]);
+		const updateTodo = [...todoItems];
+		updateTodo.splice(destIndex, 0, updateTodo.splice(srcIndex, 1)[0]);
+		setTodoItems(updateTodo);
 	};
 
 	return (
