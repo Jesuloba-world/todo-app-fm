@@ -67,6 +67,10 @@ const Todo: React.FC<todoProps> = (props) => {
 		setTodoItems((prev) => prev.filter((item) => item.completed !== true));
 	};
 
+	const toCompleteDragHandler = (srcIndex: number, destIndex: number) => {
+		todoItems.splice(srcIndex, 0, todoItems.splice(destIndex, 1)[0]);
+	};
+
 	return (
 		<div className="Todo">
 			<div className="Todo--top">
@@ -86,6 +90,7 @@ const Todo: React.FC<todoProps> = (props) => {
 				toDisplayModifier={toDisplayModifier}
 				toClearCompleted={toClearCompletedHandler}
 				howToDislay={howToDislay}
+				completeDrag={toCompleteDragHandler}
 			/>
 		</div>
 	);

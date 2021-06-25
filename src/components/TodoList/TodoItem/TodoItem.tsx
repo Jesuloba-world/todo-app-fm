@@ -1,16 +1,16 @@
-import { ConnectDragSource, useDrag } from "react-dnd";
+import { Draggable } from "react-beautiful-dnd";
 
 import Oval from "../../UI/shape/oval";
 import XShape from "../../UI/shape/xShape";
 
 interface props {
-	id: String;
+	id: string;
 	text: String;
 	isCompleted: Boolean;
 	isDark: Boolean;
 	deleteTodo: (id: String) => void;
 	toggleComplete: (id: String) => void;
-	dragItem: ConnectDragSource;
+	index: number;
 }
 
 const TodoItem: React.FC<props> = (props) => {
@@ -19,34 +19,46 @@ const TodoItem: React.FC<props> = (props) => {
 	};
 
 	return (
-		<li className={`todoItem todoItem--dark__${props.isDark}`}>
-			<div className="todoItem--div">
-				<div className="todoItem--Oval" onClick={onOvalClickHandler}>
-					<Oval
-						isDark={props.isDark}
-						todoIsCompleted={props.isCompleted}
-					/>
-				</div>
-				<p
-					className={`todoItem--text todoItem--text--dark__${
-						props.isDark
-					} ${
-						props.isCompleted
-							? `todoItem--text__completed todoItem--text__completed--dark__${props.isDark}`
-							: null
-					}`}
+		<Draggable draggableId={`draggable-${props.id}`} index={props.index}>
+			{(provided, snapshot) => (
+				<li
+					ref={provided.innerRef}
+					{...provided.draggableProps}
+					{...provided.dragHandleProps}
+					className={`todoItem todoItem--dark__${props.isDark}`}
 				>
-					{props.text}
-				</p>
-				<div className="todoItem--XShape">
-					<XShape
-						deleteTodo={props.deleteTodo}
-						itemId={props.id}
-						isDark={props.isDark}
-					/>
-				</div>
-			</div>
-		</li>
+					<div className="todoItem--div">
+						<div
+							className="todoItem--Oval"
+							onClick={onOvalClickHandler}
+						>
+							<Oval
+								isDark={props.isDark}
+								todoIsCompleted={props.isCompleted}
+							/>
+						</div>
+						<p
+							className={`todoItem--text todoItem--text--dark__${
+								props.isDark
+							} ${
+								props.isCompleted
+									? `todoItem--text__completed todoItem--text__completed--dark__${props.isDark}`
+									: null
+							}`}
+						>
+							{props.text}
+						</p>
+						<div className="todoItem--XShape">
+							<XShape
+								deleteTodo={props.deleteTodo}
+								itemId={props.id}
+								isDark={props.isDark}
+							/>
+						</div>
+					</div>
+				</li>
+			)}
+		</Draggable>
 	);
 };
 

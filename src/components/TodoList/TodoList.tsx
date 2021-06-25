@@ -1,10 +1,9 @@
 import React from "react";
-import { useDrag, useDrop } from "react-dnd";
+import { DragDropContext, Droppable, DropResult } from "react-beautiful-dnd";
 
 import TodoItem from "./TodoItem/TodoItem";
 import todoItem, { modifier } from "../../models/todoItem.model";
 import TodoPanel from "../TodoPanel/TodoPanel";
-
 interface props {
 	items: todoItem[];
 	realItems: todoItem[];
@@ -14,6 +13,7 @@ interface props {
 	toDisplayModifier: (modifier: modifier) => void;
 	toClearCompleted: () => void;
 	howToDislay: modifier;
+	completeDrag: (index1: number, index2: number) => void;
 }
 
 const TodoList: React.FC<props> = (props) => {
@@ -21,44 +21,47 @@ const TodoList: React.FC<props> = (props) => {
 		(item) => item.completed !== true
 	).length;
 
-	const [{ isOver }, dropTodoItemRef] = useDrop({
-		accept: "TODOITEM",
-		collect: (monitor) => ({
-			isOver: monitor.isOver(),
-		}),
-	});
-
-	const [{ isDragging }, dragTodoItemRef] = useDrag(() => ({
-		type: "TODOITEM",
-		collect: (monitor) => ({
-			isDragging: monitor.isDragging,
-		}),
-	}));
+	const onDragEndHandler = (param: DropResult) => {
+		const srcIndex = param.source.index;
+		const destIndex = param.destination!.index;
+		props.completeDrag(srcIndex, destIndex);
+	};
 
 	return (
-		<div className={`todoList todoList--dark__${props.isDark}`}>
-			<ul className="todoList--list">
-				{props.items.map((item) => (
-					<TodoItem
-						id={item.id}
-						key={item.id}
-						isCompleted={item.completed}
-						text={item.todo}
-						isDark={props.isDark}
-						deleteTodo={props.deleteTodo}
-						toggleComplete={props.toggleComplete}
-						dragItem={dragTodoItemRef}
-					/>
-				))}
-			</ul>
-			<TodoPanel
-				isDark={props.isDark}
-				numberOfItemsLeft={numberOfItemsLeft}
-				toDisplay={props.toDisplayModifier}
-				toClearCompleted={props.toClearCompleted}
-				howToDisplay={props.howToDislay}
-			/>
-		</div>
+		<DragDropContext onDragEnd={onDragEndHandler}>
+			<div className={`todoList todoList--dark__${props.isDark}`}>
+				<Droppable droppableId={"todolist"}>
+					{(provided, _) => (
+						<ul
+							className="todoList--list"
+							ref={provided.innerRef}
+							{...provided.droppableProps}
+						>
+							{props.items.map((item, index) => (
+								<TodoItem
+									key={item.id}
+									id={item.id}
+									index={index}
+									isCompleted={item.completed}
+									text={item.todo}
+									isDark={props.isDark}
+									deleteTodo={props.deleteTodo}
+									toggleComplete={props.toggleComplete}
+								/>
+							))}
+							{provided.placeholder}
+						</ul>
+					)}
+				</Droppable>
+				<TodoPanel
+					isDark={props.isDark}
+					numberOfItemsLeft={numberOfItemsLeft}
+					toDisplay={props.toDisplayModifier}
+					toClearCompleted={props.toClearCompleted}
+					howToDisplay={props.howToDislay}
+				/>
+			</div>
+		</DragDropContext>
 	);
 };
 
