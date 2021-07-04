@@ -6,7 +6,7 @@ const attribution: React.FC = () => (
 		</a>
 		. Coded by{" "}
 		<a href="http://www.github.com/jesuloba-world" target="blank">
-			Jesuloba
+			Jesuloba John
 		</a>
 		.
 	</div>

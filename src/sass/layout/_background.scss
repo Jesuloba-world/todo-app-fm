@@ -52,13 +52,19 @@
 	left: 0;
 	padding: 1rem;
 	font-size: 1.1rem;
-	transition: all 0.5s;
 
 	& a {
-		color: hsl(228, 45%, 44%);
+		&:visited,
+		&:link {
+			color: hsl(228, 45%, 44%);
+			display: inline-block;
+			transition: all 0.2s;
+		}
 
-		&:hover {
+		&:hover,
+		&:active {
 			color: green;
+			transform: scale(1.2) translateY(-0.5rem);
 		}
 	}
 }
