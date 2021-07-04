@@ -1,4 +1,4 @@
-import React from "react";
+import Attribution from "../../components/Attribution/attribution";
 
 interface backgroundProps {
 	isDark: Boolean;
@@ -12,6 +12,7 @@ const Background: React.FC<backgroundProps> = (props) => (
 		<div className={`background--app-holder`}>
 			<div className={`background--app-holder__main`}>
 				{props.children}
+				<Attribution />
 			</div>
 		</div>
 	</div>

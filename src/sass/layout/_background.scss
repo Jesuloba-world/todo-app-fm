@@ -45,3 +45,20 @@
 		}
 	}
 }
+
+.attribution {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	padding: 1rem;
+	font-size: 1.1rem;
+	transition: all 0.5s;
+
+	& a {
+		color: hsl(228, 45%, 44%);
+
+		&:hover {
+			color: green;
+		}
+	}
+}
