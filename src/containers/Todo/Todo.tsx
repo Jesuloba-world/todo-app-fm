@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { v4 as uniqueId } from "uuid";
 
 import AppName from "../../components/AppName/AppName";
@@ -13,12 +13,25 @@ interface todoProps {
 }
 
 const Todo: React.FC<todoProps> = (props) => {
-	const [todoItems, setTodoItems] = useState<todoItem[]>([]);
+	const [todoItems, setTodoItems] = useState<todoItem[]>(onMount);
 	const [itemsToDisplay, setItemsToDisplay] = useState<todoItem[]>([]);
 	const [howToDislay, setHowToDislay] = useState<modifier>("All");
 
+	// so useState can also act as ComponentWillMount
+	function onMount() {
+		const todos = localStorage.getItem("todos-abcd");
+		if (todos !== null) {
+			return JSON.parse(todos);
+		}
+		return [];
+	}
+
 	useEffect(() => {
 		setItemsToDisplay(todoItems);
+	}, [todoItems]);
+
+	useEffect(() => {
+		localStorage.setItem("todos-abcd", JSON.stringify(todoItems));
 	}, [todoItems]);
 
 	const todoInputHandler = (text: string) => {
