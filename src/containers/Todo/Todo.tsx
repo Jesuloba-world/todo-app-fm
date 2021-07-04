@@ -94,6 +94,21 @@ const Todo: React.FC<todoProps> = (props) => {
 				howToDislay={howToDislay}
 				completeDrag={toCompleteDragHandler}
 			/>
+			<div className="Todo--bottom">
+				<p
+					className={`Todo--bottom--text ${
+						!props.isDark ? "Todo--bottom--text__light" : null
+					} ${
+						!(todoItems.length > 1)
+							? "Todo--bottom--text__invisible"
+							: null
+					}`}
+				>
+					{howToDislay === "All"
+						? "Drag and drop to reorder list"
+						: "Go to All to reorder"}
+				</p>
+			</div>
 		</div>
 	);
 };

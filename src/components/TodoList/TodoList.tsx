@@ -4,6 +4,7 @@ import { DragDropContext, Droppable, DropResult } from "react-beautiful-dnd";
 import TodoItem from "./TodoItem/TodoItem";
 import todoItem, { modifier } from "../../models/todoItem.model";
 import TodoPanel from "../TodoPanel/TodoPanel";
+
 interface props {
 	items: todoItem[];
 	realItems: todoItem[];
@@ -49,6 +50,7 @@ const TodoList: React.FC<props> = (props) => {
 									isDark={props.isDark}
 									deleteTodo={props.deleteTodo}
 									toggleComplete={props.toggleComplete}
+									howToDislay={props.howToDislay}
 								/>
 							))}
 							{provided.placeholder}

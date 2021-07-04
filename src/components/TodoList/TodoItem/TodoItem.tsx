@@ -1,4 +1,5 @@
 import { Draggable } from "react-beautiful-dnd";
+import { modifier } from "../../../models/todoItem.model";
 
 import Oval from "../../UI/shape/oval";
 import XShape from "../../UI/shape/xShape";
@@ -11,6 +12,7 @@ interface props {
 	deleteTodo: (id: String) => void;
 	toggleComplete: (id: String) => void;
 	index: number;
+	howToDislay: modifier;
 }
 
 const TodoItem: React.FC<props> = (props) => {
@@ -19,7 +21,11 @@ const TodoItem: React.FC<props> = (props) => {
 	};
 
 	return (
-		<Draggable draggableId={`draggable-${props.id}`} index={props.index}>
+		<Draggable
+			draggableId={`draggable-${props.id}`}
+			index={props.index}
+			isDragDisabled={props.howToDislay === "All" ? false : true}
+		>
 			{(provided, snapshot) => (
 				<li
 					ref={provided.innerRef}
