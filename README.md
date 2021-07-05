@@ -27,12 +27,12 @@ Users should be able to:
 -   Filter by all/active/complete todos
 -   Clear all completed todos
 -   Toggle light and dark mode
--   **Bonus**: Drag and drop to reorder items on the list
+-   Drag and drop to reorder items on the list
 
 ### Links
 
--   Solution URL: [Add solution URL here](https://your-solution-url.com)
--   Live Site URL: [https://fmtodoapp.web.app/](https://fmtodoapp.web.app/)
+-   Solution URL: [Solution link](https://www.frontendmentor.io/solutions/todo-app-built-with-react-using-sass-4-hEOZnrr)
+-   Live Site URL: [https://fmtodoapp.netlify.app/](https://fmtodoapp.netlify.app/)
 
 ## My process
 
