@@ -6,6 +6,7 @@ import ToggleDark from "../../components/ToggleDark/ToggleDark";
 import TodoInput from "../../components/TodoInput/TodoInput";
 import TodoList from "../../components/TodoList/TodoList";
 import todoItem, { modifier } from "../../models/todoItem.model";
+import AuxTodoPanel from "../../components/TodoPanel/AuxTodoPanel";
 
 interface todoProps {
 	toggleDark: () => void;
@@ -15,7 +16,7 @@ interface todoProps {
 const Todo: React.FC<todoProps> = (props) => {
 	const [todoItems, setTodoItems] = useState<todoItem[]>(onMount);
 	const [itemsToDisplay, setItemsToDisplay] = useState<todoItem[]>([]);
-	const [howToDislay, setHowToDislay] = useState<modifier>("All");
+	const [howToDisplay, setHowToDisplay] = useState<modifier>("All");
 
 	// so useState can also act as ComponentWillMount
 	function onMount() {
@@ -30,17 +31,17 @@ const Todo: React.FC<todoProps> = (props) => {
 		(modifier: modifier) => {
 			switch (modifier) {
 				case "All":
-					setHowToDislay("All");
+					setHowToDisplay("All");
 					setItemsToDisplay(todoItems);
 					break;
 				case "Active":
-					setHowToDislay("Active");
+					setHowToDisplay("Active");
 					setItemsToDisplay(
 						todoItems.filter((item) => item.completed !== true)
 					);
 					break;
 				case "Completed":
-					setHowToDislay("Completed");
+					setHowToDisplay("Completed");
 					setItemsToDisplay(
 						todoItems.filter((item) => item.completed === true)
 					);
@@ -52,8 +53,8 @@ const Todo: React.FC<todoProps> = (props) => {
 
 	useEffect(() => {
 		setItemsToDisplay(todoItems);
-		toDisplayModifier(howToDislay);
-	}, [todoItems, howToDislay, toDisplayModifier]);
+		toDisplayModifier(howToDisplay);
+	}, [todoItems, howToDisplay, toDisplayModifier]);
 
 	useEffect(() => {
 		localStorage.setItem("todos-abcd", JSON.stringify(todoItems));
@@ -108,8 +109,13 @@ const Todo: React.FC<todoProps> = (props) => {
 				toggleComplete={todoToggleCompleteHandler}
 				toDisplayModifier={toDisplayModifier}
 				toClearCompleted={toClearCompletedHandler}
-				howToDislay={howToDislay}
+				howToDisplay={howToDisplay}
 				completeDrag={toCompleteDragHandler}
+			/>
+			<AuxTodoPanel
+				isDark={props.isDark}
+				howToDisplay={howToDisplay}
+				toDisplay={toDisplayModifier}
 			/>
 			<div className="Todo--bottom">
 				<p
@@ -121,7 +127,7 @@ const Todo: React.FC<todoProps> = (props) => {
 							: null
 					}`}
 				>
-					{howToDislay === "All"
+					{howToDisplay === "All"
 						? "Drag and drop to reorder list"
 						: "Go to All to reorder"}
 				</p>

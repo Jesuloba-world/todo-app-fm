@@ -13,7 +13,7 @@ interface props {
 	toggleComplete: (id: String) => void;
 	toDisplayModifier: (modifier: modifier) => void;
 	toClearCompleted: () => void;
-	howToDislay: modifier;
+	howToDisplay: modifier;
 	completeDrag: (index1: number, index2: number) => void;
 }
 
@@ -50,7 +50,7 @@ const TodoList: React.FC<props> = (props) => {
 									isDark={props.isDark}
 									deleteTodo={props.deleteTodo}
 									toggleComplete={props.toggleComplete}
-									howToDislay={props.howToDislay}
+									howToDislay={props.howToDisplay}
 								/>
 							))}
 							{provided.placeholder}
@@ -62,7 +62,7 @@ const TodoList: React.FC<props> = (props) => {
 					numberOfItemsLeft={numberOfItemsLeft}
 					toDisplay={props.toDisplayModifier}
 					toClearCompleted={props.toClearCompleted}
-					howToDisplay={props.howToDislay}
+					howToDisplay={props.howToDisplay}
 				/>
 			</div>
 		</DragDropContext>
