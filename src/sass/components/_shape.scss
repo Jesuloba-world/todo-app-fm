@@ -53,6 +53,8 @@
 }
 
 .XShape {
+	cursor: pointer;
+
 	&--dark {
 		&__true {
 			& path {
