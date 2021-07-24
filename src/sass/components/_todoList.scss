@@ -5,6 +5,10 @@
 	box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.5);
 	border-radius: 5px;
 
+	@include respond(mobile) {
+		margin-top: 1.6rem;
+	}
+
 	&--list {
 		list-style: none;
 		max-height: 40vh;

@@ -18,6 +18,11 @@
 	align-items: center;
 	justify-content: center;
 
+	@include respond(mobile) {
+		width: 2rem;
+		height: 2rem;
+	}
+
 	&--dark {
 		&__true {
 			border: 1px solid $veryDarkerGrayishBlue;

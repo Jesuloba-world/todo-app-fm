@@ -9,4 +9,8 @@
 	font-family: $family;
 
 	color: #ffffff;
+
+	@include respond(mobile) {
+		font-size: 2rem;
+	}
 }

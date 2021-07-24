@@ -5,6 +5,11 @@
 		position: relative;
 		display: flex;
 		align-items: center;
+
+		@include respond(mobile) {
+			height: 5.2rem;
+			padding: 1.6rem 2rem;
+		}
 	}
 
 	&:hover &--XShape {
@@ -34,6 +39,12 @@
 		line-height: 1.8rem;
 		letter-spacing: -0.25px;
 
+		@include respond(mobile) {
+			font-size: 1.2rem;
+			line-height: 1.2rem;
+			letter-spacing: -0.166667px;
+		}
+
 		&--dark {
 			&__true {
 				color: $lightGrayishBlue;
@@ -62,6 +73,10 @@
 	&--Oval {
 		margin-right: 2.4rem;
 		z-index: 0;
+
+		@include respond(mobile) {
+			margin-right: 1.2rem;
+		}
 	}
 
 	&--XShape {
@@ -69,5 +84,10 @@
 		transform: translateX(4rem);
 		opacity: 0;
 		transition: all 0.3s;
+
+		@include respond(mobile) {
+			transform: translateX(0);
+			opacity: 1;
+		}
 	}
 }

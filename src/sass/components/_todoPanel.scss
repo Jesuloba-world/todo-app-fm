@@ -6,12 +6,20 @@
 	display: flex;
 	justify-content: space-between;
 
+	@include respond(mobile) {
+		font-size: 1.2rem;
+	}
+
 	& p {
 		color: hsl(235, 16%, 42%);
 	}
 
 	&--displayControls {
 		display: flex;
+
+		@include respond(mobile) {
+			display: none;
+		}
 
 		& p {
 			font-weight: bold;

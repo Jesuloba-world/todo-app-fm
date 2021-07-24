@@ -19,15 +19,26 @@
 	&--head {
 		height: 30rem;
 		background-size: cover;
-		background-position: center;
+		background-position: top;
+
+		@include respond(mobile) {
+			height: 20rem;
+		}
 
 		&--dark {
 			&__true {
 				background-image: url("../images/bg-desktop-dark.jpg");
+
+				@include respond(mobile) {
+					background-image: url("../images/bg-mobile-dark.jpg");
+				}
 			}
 
 			&__false {
 				background-image: url("../images/bg-desktop-light.jpg");
+				@include respond(mobile) {
+					background-image: url("../images/bg-mobile-light.jpg");
+				}
 			}
 		}
 	}
@@ -42,6 +53,11 @@
 		&__main {
 			width: 54rem;
 			margin: 0 auto;
+
+			@include respond(mobile) {
+				width: 100%;
+				padding: 0 2.4rem;
+			}
 		}
 	}
 }

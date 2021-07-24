@@ -1,6 +1,10 @@
 .Todo {
 	padding-top: 7rem;
 
+	@include respond(mobile) {
+		padding-top: 4.8rem;
+	}
+
 	&--top {
 		display: flex;
 		justify-content: space-between;
