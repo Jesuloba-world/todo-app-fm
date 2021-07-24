@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { v4 as uniqueId } from "uuid";
 
 import AppName from "../../components/AppName/AppName";
@@ -26,9 +26,34 @@ const Todo: React.FC<todoProps> = (props) => {
 		return [];
 	}
 
+	const toDisplayModifier = useCallback(
+		(modifier: modifier) => {
+			switch (modifier) {
+				case "All":
+					setHowToDislay("All");
+					setItemsToDisplay(todoItems);
+					break;
+				case "Active":
+					setHowToDislay("Active");
+					setItemsToDisplay(
+						todoItems.filter((item) => item.completed !== true)
+					);
+					break;
+				case "Completed":
+					setHowToDislay("Completed");
+					setItemsToDisplay(
+						todoItems.filter((item) => item.completed === true)
+					);
+					break;
+			}
+		},
+		[todoItems]
+	);
+
 	useEffect(() => {
 		setItemsToDisplay(todoItems);
-	}, [todoItems]);
+		toDisplayModifier(howToDislay);
+	}, [todoItems, howToDislay, toDisplayModifier]);
 
 	useEffect(() => {
 		localStorage.setItem("todos-abcd", JSON.stringify(todoItems));
@@ -50,27 +75,6 @@ const Todo: React.FC<todoProps> = (props) => {
 		updatedTodo[toChangeIndex].completed =
 			!updatedTodo[toChangeIndex].completed;
 		setTodoItems(updatedTodo);
-	};
-
-	const toDisplayModifier = (modifier: modifier) => {
-		switch (modifier) {
-			case "All":
-				setHowToDislay("All");
-				setItemsToDisplay(todoItems);
-				break;
-			case "Active":
-				setHowToDislay("Active");
-				setItemsToDisplay(
-					todoItems.filter((item) => item.completed !== true)
-				);
-				break;
-			case "Completed":
-				setHowToDislay("Completed");
-				setItemsToDisplay(
-					todoItems.filter((item) => item.completed === true)
-				);
-				break;
-		}
 	};
 
 	const toClearCompletedHandler = () => {
